@@ -6,8 +6,8 @@ seconds and eventually returns it.
 
 Use the random module.
 """
-from random import uniform
-from asyncio import sleep
+import random
+import asyncio
 
 
 async def wait_random(max_delay: int = 10) -> float:
@@ -17,6 +17,6 @@ async def wait_random(max_delay: int = 10) -> float:
     seconds and eventually
     returns it.
     """
-    seconds = uniform(0, max_delay)
-    await sleep(seconds)
+    seconds = random.uniform(0, max_delay)
+    await asyncio.sleep(seconds)
     return seconds
