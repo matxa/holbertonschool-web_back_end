@@ -1,6 +1,6 @@
 <h1 class="gap">0x01. Python - Async</h1>
 
-![async_meme](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2019/12/4aeaa9c3cb1f316c05c4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUWMNL5ANN%2F20210317%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210317T035303Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=d118122f884987e198bf08408ebab5a8c4f884b8165217a6ece3a8d8aa862695)
+[async_meme](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2019/12/4aeaa9c3cb1f316c05c4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUWMNL5ANN%2F20210317%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210317T035303Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=d118122f884987e198bf08408ebab5a8c4f884b8165217a6ece3a8d8aa862695)
 
 <h2>Resources</h2>
 
