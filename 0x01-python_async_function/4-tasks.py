@@ -7,7 +7,21 @@ from typing import List
 
 
 async def task_wait_n(n: int, max_delay: int) -> List[float]:
-    """return the list of all the delays (float values)."""
+    """Make a list of time in second(s)
+    that each task took to complete
+
+    Parameters
+    ----------
+    n : int
+        number of task(s) to execute concurrently
+    max_delay : int
+        max delaying(sleep) time in second(s)
+
+    Returns
+    -------
+    list(float)
+        a sorted list of seconds each task took to complete
+    """
     task_wait_random = __import__('3-tasks').task_wait_random
     delays = [task_wait_random(max_delay) for i in range(n)]
     completed = []

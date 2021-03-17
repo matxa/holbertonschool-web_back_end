@@ -12,11 +12,22 @@ import asyncio
 from typing import List
 
 
-wait_random = __import__('0-basic_async_syntax').wait_random
-
-
 async def wait_n(n: int, max_delay: int) -> List[float]:
-    """return the list of all the delays (float values)."""
+    """Make a list of time in second(s)
+    that each task took to complete
+
+    Parameters
+    ----------
+    n : int
+        number of task(s) to execute concurrently
+    max_delay : int
+        max delaying(sleep) time in second(s)
+
+    Returns
+    -------
+    list(float)
+        a sorted list of seconds each task took to complete
+    """
     wait_random = __import__('0-basic_async_syntax').wait_random
     delays = [wait_random(max_delay) for i in range(n)]
     completed = []

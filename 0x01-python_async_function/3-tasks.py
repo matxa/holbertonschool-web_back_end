@@ -14,7 +14,8 @@ def task_wait_random(max_delay: int) -> asyncio.Task:
 
     Parameters
     ----------
-    max_delay: int
+    max_delay : int
+        max delaying(sleep) time in second(s)
 
     Returns
     -------
