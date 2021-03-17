@@ -6,10 +6,10 @@ then yield a random number between 0 and 10. Use the random module.
 """
 import asyncio
 import random
-import typing
+from typing import Generator
 
 
-async def async_generator() -> typing.Generator[float]:
+async def async_generator() -> Generator[float, None, None]:
     """async generator
 
     Returns
