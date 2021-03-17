@@ -12,7 +12,17 @@ from typing import Sequence, Any, Union
 
 
 def safe_first_element(lst: Sequence[Any]) -> Union[Any, None]:
-    """If lst return 1st index lst else return None"""
+    """If lst return 1st index of lst else return None
+
+    Parameters
+    ----------
+    lst : Sequence[Any]
+        list to check
+
+    Returns
+    -------
+    Any || None
+    """
     if lst:
         return lst[0]
     else:

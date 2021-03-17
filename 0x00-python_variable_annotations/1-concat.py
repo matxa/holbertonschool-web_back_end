@@ -6,5 +6,18 @@ as arguments and returns a concatenated string
 
 
 def concat(str1: str, str2: str) -> str:
-    """Concatinate two strins using annotation"""
+    """Concatenate two strings
+
+    Parameters
+    ----------
+    str1 : str
+        first string
+    str2 : str
+        second string
+
+    Returns
+    -------
+    str
+        concatenated string = str1 + str2
+    """
     return str1 + str2

@@ -7,5 +7,16 @@ from typing import List
 
 
 def sum_list(input_list: List[float]) -> float:
-    """sum list and return as flaot"""
+    """Sum a list of floats
+
+    Parameters
+    ----------
+    input_list : list(float)
+        list to sum
+
+    Returns
+    -------
+    float
+        sum of input_list
+    """
     return float(sum(input_list))

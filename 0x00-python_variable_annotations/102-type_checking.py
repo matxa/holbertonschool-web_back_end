@@ -20,8 +20,19 @@ from typing import Tuple, Any, List
 
 
 def zoom_array(lst: Tuple, factor: int = 2) -> List:
-    """Zoom array - by repeating each number
-    x amount of factors
+    """Zoom array - by repeating each number x amount of factors
+
+    Parameters
+    ----------
+    lst : tuple
+        tuple to zoom
+    factor : int = 2
+        amount of times to repeat each number in the tuple
+
+    Returns
+    -------
+    list
+        zoomed list
     """
     zoomed_in: List = [
         item for item in lst

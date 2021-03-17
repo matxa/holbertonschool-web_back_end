@@ -9,5 +9,18 @@ from typing import Union, Tuple
 
 
 def to_kv(k: str, v: Union[int, float]) -> Tuple[str, float]:
-    """return a tuple - containing k and square of v"""
+    """A tuple - containing k and square of v
+
+    Parameters
+    ----------
+    k : str
+        first of element of returned tuple
+    v : int || float
+        number to square and second element in a tuple
+
+    Returns
+    -------
+    tuple(str, float)
+        containing k and v**2
+    """
     return (k, float(v**2))

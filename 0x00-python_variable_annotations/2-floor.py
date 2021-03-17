@@ -6,5 +6,16 @@ returns the floor of the float.
 
 
 def floor(n: float) -> int:
-    """get the floor of a float"""
+    """Get the floor of a float
+
+    Parameters
+    ----------
+    n : float
+        number to floor
+
+    Returns
+    -------
+    int
+        converted float to int
+    """
     return int(n)
