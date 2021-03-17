@@ -8,7 +8,7 @@ import asyncio
 import random
 
 
-async def async_generator() -> None:
+async def async_generator():
     """async generator
 
     Returns
