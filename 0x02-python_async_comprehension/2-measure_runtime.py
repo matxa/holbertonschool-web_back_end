@@ -18,7 +18,7 @@ async def measure_runtime() -> float:
     Returns
     -------
     float
-        amount of seconds it took running
+        amount of second(s) it took running
     """
     start = time.time()
     await asyncio.gather(
