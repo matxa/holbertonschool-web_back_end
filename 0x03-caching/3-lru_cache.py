@@ -3,7 +3,6 @@
 from BaseCaching and is a caching system
 """
 from base_caching import BaseCaching
-from functools import lru_cache
 
 
 class LRUCache(BaseCaching):
@@ -14,7 +13,6 @@ class LRUCache(BaseCaching):
     def __init__(self):
         super().__init__()
 
-    @lru_cache(maxsize=4)
     def put(self, key, item):
         """Add chaching to caching system"""
         if key is None or item is None:
