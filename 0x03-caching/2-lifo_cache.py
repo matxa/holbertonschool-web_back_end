@@ -8,7 +8,7 @@ from base_caching import BaseCaching
 class LIFOCache(BaseCaching):
     """last in first out caching system"""
 
-    def __init__():
+    def __init__(self):
         super().__init__()
 
     def put(self, key, item):
@@ -18,7 +18,9 @@ class LIFOCache(BaseCaching):
         else:
             self.cache_data.update({key: item})
             if self.cache_data.__len__() > super().MAX_ITEMS:
-                pop_item = self.cache_data.popitem()
+                cache_list = list(self.cache_data)
+                pop_item = cache_list[-2]
+                self.cache_data.pop(pop_item)
                 print("DISCARD: {}".format(pop_item))
 
     def get(self, key):
