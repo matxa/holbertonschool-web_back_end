@@ -25,4 +25,4 @@ def index_range(page: int, page_size: int) -> Tuple:
     if page <= 1:
         return (0, page_size)
     else:
-        return (page * 10, (page * 10) + page_size)
+        return ((page * page_size) - page_size, (page * page_size))
