@@ -4,6 +4,7 @@ from typing import List
 import re
 import logging
 import datetime
+import csv
 
 
 class RedactingFormatter(logging.Formatter):
@@ -32,3 +33,18 @@ def filter_datum(
         message = re.sub(r"(?<={}=)(.*?(?={}))".format(
             field, separator), redaction, message)
     return message
+
+
+def get_logger() -> logging.Logger:
+    """logging"""
+    logging.Logger.__name__ = "user_data"
+    logging.Logger.setLevel(logging.INFO)
+    logging.StreamHandler(RedactingFormatter)
+    return logging.Logger
+
+
+with open('user_data.csv') as csvfile:
+    reader = csv.reader(csvfile)
+    f = [row for row in reader][0]
+
+PII_FIELDS = (f[0], f[1], f[2], f[3], f[4])
