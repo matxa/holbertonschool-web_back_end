@@ -40,7 +40,8 @@ def filter_datum(
 
 def get_logger() -> logging.Logger:
     """logging"""
-    logging.Logger.__name__ = "user_data"
-    logging.Logger.setLevel(logging.INFO)
-    logging.StreamHandler(RedactingFormatter)
-    return logging.Logger
+    logger = logging.getLogger("user_data")
+    logger.setLevel(logging.INFO)
+    logger.propagate = False
+    logger.addHandler(logging.StreamHandler().setFormatter(RedactingFormatter))
+    return logger
