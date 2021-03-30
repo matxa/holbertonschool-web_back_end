@@ -43,6 +43,7 @@ def get_logger() -> logging.Logger:
     return logging.Logger
 
 
+f = []
 with open('user_data.csv') as csvfile:
     reader = csv.reader(csvfile)
     f = [row for row in reader][0]
