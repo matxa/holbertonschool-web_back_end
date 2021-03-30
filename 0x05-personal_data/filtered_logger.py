@@ -7,6 +7,9 @@ import datetime
 import csv
 
 
+PII_FIELDS = ("name", "email", "phone", "ssn", "password")
+
+
 class RedactingFormatter(logging.Formatter):
     """ Redacting Formatter class
         """
@@ -41,10 +44,3 @@ def get_logger() -> logging.Logger:
     logging.Logger.setLevel(logging.INFO)
     logging.StreamHandler(RedactingFormatter)
     return logging.Logger
-
-
-with open('user_data.csv') as csvfile:
-    reader = csv.reader(csvfile)
-    f = [row for row in reader][0]
-
-PII_FIELDS: Tuple = (f[0], f[1], f[2], f[3], f[4])
