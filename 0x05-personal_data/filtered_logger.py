@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """0. Regex-ing"""
-from typing import List
+from typing import List, Tuple
 import re
 import logging
 import datetime
@@ -43,9 +43,8 @@ def get_logger() -> logging.Logger:
     return logging.Logger
 
 
-f = []
 with open('user_data.csv') as csvfile:
     reader = csv.reader(csvfile)
     f = [row for row in reader][0]
 
-PII_FIELDS = (f[0], f[1], f[2], f[3], f[4])
+PII_FIELDS: Tuple = (f[0], f[1], f[2], f[3], f[4])
