@@ -67,7 +67,7 @@ class BasicAuth(Auth):
         """
         if request:
             header = self.authorization_header(request)
-            base64_key = self.extract_base64_authorization_header(auth_header)
+            base64_key = self.extract_base64_authorization_header(header)
             user_pwd = self.decode_base64_authorization_header(base64_key)
             user, pwd = self.extract_user_credentials(user_pwd)
             user = self.user_object_from_credentials(user, pwd)
