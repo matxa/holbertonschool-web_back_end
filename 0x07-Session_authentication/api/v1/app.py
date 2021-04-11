@@ -32,13 +32,17 @@ def before_request_func():
     """ Before request
     """
     if auth is not None:
-        p = ['/api/v1/status/', '/api/v1/unauthorized/', '/api/v1/forbidden/']
+        p = [
+            '/api/v1/status/', '/api/v1/unauthorized/',
+            '/api/v1/forbidden/', '/api/v1/auth_session/login/'
+        ]
         path = request.path + '/' if request.path[-1] != '/' else request.path
         if path not in p:
             auth.require_auth(path, [])
         else:
             return
-        if auth.authorization_header(request) is None:
+        if auth.authorization_header(request) is None or\
+           auth.session_cookie(request) is None:
             abort(401)
         if auth.current_user(request) is None:
             abort(403)
