@@ -34,4 +34,4 @@ def auth_session() -> str:
 
     res = jsonify(user.to_json())
     res.set_cookie(cookie, session_id)
-    return res
+    return res, 200
