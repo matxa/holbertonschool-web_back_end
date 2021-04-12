@@ -22,6 +22,7 @@ def auth_session() -> str:
     user = User.search({"email": email})
     if len(user) < 1:
         return jsonify({"error": "no user found for this email"}), 404
+
     user = user[0]
     if user.is_valid_password(pwd) is False:
         return jsonify({"error": "wrong password"}), 401
@@ -29,7 +30,8 @@ def auth_session() -> str:
     # IMPORT may cause circular import error
     from api.v1.app import auth
     cookie = os.getenv('SESSION_NAME')
+    session_id = auth.create_session(user.id)
 
     res = jsonify(user.to_json())
-    res.set_cookie(cookie, auth.create_session(user.id))
+    res.set_cookie(cookie, session_id)
     return res
