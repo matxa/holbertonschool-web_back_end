@@ -60,8 +60,7 @@ class DB:
             return user_result
 
     def update_user(self, user_id: int, **kwargs) -> None:
-        """ Update user
-        """
+        """ Update user iterating through kwargs """
         user = self.find_user_by(id=user_id)
         for key, value in kwargs.items():
             if not hasattr(user, key):
