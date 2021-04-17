@@ -73,3 +73,4 @@ class DB:
             return None
         except NoResultFound:
             raise NoResultFound
+        return None
