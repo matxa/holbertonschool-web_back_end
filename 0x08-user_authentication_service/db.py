@@ -60,11 +60,13 @@ class DB:
             return user_result
 
     def update_user(self, user_id: int, **kwargs) -> None:
-        """ Update user iterating through kwargs """
+        """ Updates a user with kwargs in the DB """
         user = self.find_user_by(id=user_id)
-        for key, value in kwargs.items():
+
+        for key in kwargs:
             if key not in user.__dir__():
                 raise ValueError
-            setattr(user, key, value)
+            setattr(user, key, kwargs[key])
+
         self._session.commit()
         return None
