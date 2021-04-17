@@ -71,4 +71,4 @@ class DB:
             self._session.commit()
             return None
         except NoResultFound:
-            raise NoResultFound
+            return None
