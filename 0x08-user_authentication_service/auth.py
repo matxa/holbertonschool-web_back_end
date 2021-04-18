@@ -72,9 +72,9 @@ class Auth:
         """ Destroy session
         """
         try:
-            user = self._db.find_user_by(user_id=user_id)
+            user = self._db.find_user_by(id=user_id)
             user.session_id = None
-            self._db.commit()
+            self._db._session.commit()
             return None
         except NoResultFound:
             return None
