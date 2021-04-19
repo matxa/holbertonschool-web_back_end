@@ -102,11 +102,11 @@ def update_password():
     """
     form_keys = request.form.keys
     if "email" in form_keys and "reset_token" in\
-       form_keys and "password" in form_keys:
+       form_keys and "new_password" in form_keys:
 
         email = request.form["email"]
         reset_token = request.form["reset_token"]
-        password = request.form["password"]
+        password = request.form["new_password"]
 
         try:
             AUTH.update_password(reset_token, password)
@@ -119,5 +119,4 @@ def update_password():
 
 
 if __name__ == "__main__":
-    subprocess.call('./main.py')
-    app.run(host="0.0.0.0", port="5000", debug=True)
+    app.run(host="0.0.0.0", port="5000")
