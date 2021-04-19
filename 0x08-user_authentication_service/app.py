@@ -3,6 +3,7 @@
 from flask import Flask, jsonify, request, abort, redirect, Response
 from sqlalchemy.orm.exc import NoResultFound
 from auth import Auth
+import subprocess
 
 
 AUTH = Auth()
@@ -69,17 +70,17 @@ def logout():
     return Response(status=403)
 
 
-@app.route('/profile', methods=['DELETE'], strict_slashes=False)
+@app.route('/profile', methods=['GET'], strict_slashes=False)
 def profile():
     """ find user using session_id cookie
     """
     session_id = request.cookies.get('session_id')
     user = AUTH.get_user_from_session_id(session_id)
     if user is not None:
-        return Response(
-            response={"email": "{}".format(user.email)}, status=200)
+        return jsonify({"email": "{}".format(user.email)}), 200
     return Response(status=403)
 
 
 if __name__ == "__main__":
+    subprocess.call('./main.py')
     app.run(host="0.0.0.0", port="5000", debug=True)
