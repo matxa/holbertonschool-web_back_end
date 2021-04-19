@@ -100,7 +100,7 @@ def get_reset_password_token():
 def update_password():
     """ Update users password
     """
-    form_keys = request.form.keys
+    form_keys = request.form.keys()
     if "email" in form_keys and "reset_token" in\
        form_keys and "new_password" in form_keys:
 
