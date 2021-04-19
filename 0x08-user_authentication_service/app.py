@@ -98,8 +98,7 @@ def get_reset_password_token():
 
 @app.route('/reset_password', methods=['PUT'], strict_slashes=False)
 def update_password():
-    """ Update users password
-    """
+    """ Update users new_password using email and reset_token """
     form_keys = request.form.keys()
     if "email" in form_keys and "reset_token" in\
        form_keys and "new_password" in form_keys:
