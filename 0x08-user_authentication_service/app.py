@@ -96,6 +96,28 @@ def get_reset_password_token():
     return Response(status=403)
 
 
+@app.route('/reset_password', methods=['PUT'], strict_slashes=False)
+def update_password():
+    """ Update users password
+    """
+    form_keys = request.form.keys
+    if "email" in form_keys and "reset_token" in\
+       form_keys and "password" in form_keys:
+
+        email = request.form["email"]
+        reset_token = request.form["reset_token"]
+        password = request.form["password"]
+
+        try:
+            AUTH.update_password(reset_token, password)
+            return jsonify({
+                "email": email,
+                "message": "Password updated"}), 200
+        except ValueError:
+            return Response(status=403)
+    return Response(status=403)
+
+
 if __name__ == "__main__":
     subprocess.call('./main.py')
     app.run(host="0.0.0.0", port="5000", debug=True)
