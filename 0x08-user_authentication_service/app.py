@@ -100,15 +100,22 @@ def get_reset_password_token():
 def update_password():
     """ Update users password
     """
-    email = request.form.get("email")
-    reset_token = request.form.get("reset_token")
-    new_password = request.form.get("new_password")
-    try:
-        AUTH._db.find_user_by(email=email)
-        AUTH.update_password(reset_token, new_password)
-        return jsonify({"email": email, "message": "Password updated"})
-    except Exception:
-        abort(403)
+    form_keys = request.form.keys()
+    if "email" in form_keys and "reset_token" in\
+       form_keys and "new_password" in form_keys:
+
+        email = request.form.get("email")
+        reset_token = request.form.get("reset_token")
+        password = request.form.get("new_password")
+
+        try:
+            AUTH.update_password(reset_token, password)
+            return jsonify({
+                "email": email,
+                "message": "Password updated"}), 200
+        except ValueError:
+            return Response(status=403)
+    return Response(status=403)
 
 
 if __name__ == "__main__":
