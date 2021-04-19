@@ -81,6 +81,21 @@ def profile():
     return Response(status=403)
 
 
+@app.route('/reset_password', methods=['POST'], strict_slashes=False)
+def get_reset_password_token():
+    """ Get and reset password token
+    """
+    if "email" in request.form.keys():
+        try:
+            reset_token = AUTH.get_reset_password_token(request.form['email'])
+            return jsonify({
+                "email": "{}".format(request.form['email']),
+                "reset_token": "{}".format(reset_token)})
+        except ValueError:
+            return Response(status=403)
+    return Response(status=403)
+
+
 if __name__ == "__main__":
     subprocess.call('./main.py')
     app.run(host="0.0.0.0", port="5000", debug=True)
