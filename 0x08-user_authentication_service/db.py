@@ -45,8 +45,7 @@ class DB:
         return new_user
 
     def find_user_by(self, **kwargs) -> User:
-        """ Find User based on key word
-        arguments passed in
+        """ Find User using kwargs
         """
         session = self._session
         user = User()
