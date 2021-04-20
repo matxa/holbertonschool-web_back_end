@@ -59,7 +59,14 @@ class DB:
             return user_result
 
     def update_user(self, user_id: int, **kwargs) -> None:
-        """ Update user
+        """Update user using kwargs
+        Parameters
+        ----------
+        kwargs
+            key word arguments
+        Return
+        ------
+            None
         """
         user = self.find_user_by(id=user_id)
         for key, value in kwargs.items():
