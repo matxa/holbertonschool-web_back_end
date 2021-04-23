@@ -18,9 +18,6 @@ babel = Babel(
     default_timezone='UTC')
 
 
-app.config.from_object(Config())
-
-
 @app.route('/', methods=['GET'], strict_slashes=False)
 def home():
     """ Home endpoint
