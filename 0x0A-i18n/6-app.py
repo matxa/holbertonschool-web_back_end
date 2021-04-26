@@ -45,7 +45,8 @@ def get_locale() -> str:
     if locale is not None and locale in Config.LANGUAGES:
         return locale
     elif g.user is not None:
-        return g.user['locale']
+        if g.user['locale'] in Config.LANGUAGES:
+            return g.user['locale']
     elif request.headers.get('locale') is not None:
         return request.headers.get('locale')
     return request.accept_languages.best_match(Config.LANGUAGES)
