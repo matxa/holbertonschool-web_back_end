@@ -48,7 +48,7 @@ def get_locale() -> str:
 
 
 @app.before_request
-def before_request_func():
+def before_request():
     """ Before request decorator
     """
     g.user = get_user()
