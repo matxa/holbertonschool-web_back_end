@@ -49,6 +49,8 @@ def get_locale() -> str:
 
 @app.before_request
 def before_request_func():
+    """ Before request decorator
+    """
     g.user = get_user()
 
 
@@ -56,7 +58,6 @@ def before_request_func():
 def home():
     """ Home endpoint
     """
-    print(g.user)
     return render_template('5-index.html', user=g.user)
 
 
