@@ -32,7 +32,7 @@ def get_user() -> Dict or None:
     if user_id is not None:
         try:
             return users[int(user_id)]
-        except ValueError:
+        except Exception:
             return None
     return None
 
