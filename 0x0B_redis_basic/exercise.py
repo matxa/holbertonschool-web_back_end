@@ -2,7 +2,7 @@
 """ Redis Basics """
 import redis
 import uuid
-from typing import Union
+from typing import Union, Optional, Callable, Any
 
 
 class Cache:
@@ -20,3 +20,9 @@ class Cache:
         UUID = str(uuid.uuid4())
         self._redis.set(UUID, data)
         return UUID
+
+    def get(self, key: str, fn: Optional[Callable] = None) -> Any:
+        """ Get key's right format
+        """
+        value = self._redis.get(key)
+        return value if not callable(fn) else fn(value)
