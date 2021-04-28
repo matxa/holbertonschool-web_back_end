@@ -37,7 +37,7 @@ def call_history(method: Callable) -> Callable:
 def replay(method: Callable):
     """ replay input and output
     """
-    cache = Cache()
+    cache = method.__self__
     inputs = cache._redis.lrange(
         "{}:inputs".format(cache.store.__qualname__), 0, -1)
     outputs = cache._redis.lrange(
@@ -45,7 +45,8 @@ def replay(method: Callable):
     print("{} was called {} times:".format(method.__qualname__, len(inputs)))
     zipped = zip(inputs, outputs)
     for in_list in zipped:
-        print("Cache.store({}) -> {}".format(in_list[0], in_list[1]))
+        print("Cache.store(*{}) -> {}".format(
+            in_list[0].decode(), in_list[1].decode()))
 
 
 class Cache:
