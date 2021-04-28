@@ -13,7 +13,7 @@ def count_calls(method: Callable) -> Callable:
     def wrapper(self, *args) -> bytes:
         key = method.__qualname__
         count = self._redis.incr(key, 1)
-        return count
+        return method(self, *args)
     return wrapper
 
 
