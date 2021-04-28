@@ -21,8 +21,10 @@ class Cache:
         self._redis.set(UUID, data)
         return UUID
 
-    def get(self, key: str, fn: Optional[Callable] = None) -> Any:
+    def get(self, key: str, fn: Optional[Callable]) -> Any:
         """ Get key's right format
         """
         value = self._redis.get(key)
-        return value if not callable(fn) else fn(value)
+        if callable(fn):
+            value = fn(value)
+        return value
