@@ -26,11 +26,26 @@ def call_history(method: Callable) -> Callable:
     def wrapper(self, *args) -> bytes:
         """ Wrapper function for decorator
         """
+        output = method(self, *args)
         self._redis.rpush("{}:inputs".format(method.__qualname__), str(args))
         self._redis.rpush("{}:outputs".format(
-            method.__qualname__), method(self, *args))
-        return method(self, *args)
+            method.__qualname__), output)
+        return output
     return wrapper
+
+
+def replay(method: Callable):
+    """ replay input and output
+    """
+    cache = Cache()
+    inputs = cache._redis.lrange(
+        "{}:inputs".format(cache.store.__qualname__), 0, -1)
+    outputs = cache._redis.lrange(
+        "{}:outputs".format(cache.store.__qualname__), 0, -1)
+    print("{} was called {} times:".format(method.__qualname__, len(inputs)))
+    zipped = zip(inputs, outputs)
+    for in_list in zipped:
+        print("Cache.store({}) -> {}".format(in_list[0], in_list[1]))
 
 
 class Cache:
