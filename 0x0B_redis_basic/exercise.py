@@ -24,9 +24,17 @@ class Cache:
     def get(self, key: str, fn: Optional[Callable] = None) -> Any:
         """ Get key's right format
         """
-        value = self._redis.get(key)
-        if value is None:
-            return None
-        if callable(fn):
-            value = fn(value)
-        return value
+        if fn is not None:
+            return fn(self._redis.get(key))
+        else:
+            return self._redis.get(key)
+
+    def get_str(self, k: str) -> str:
+        """ convert bytes to str
+        """
+        return self.get(k, str)
+
+    def get_str(self, k: int) -> int:
+        """ convert bytes to int
+        """
+        return self.get(k, int)
