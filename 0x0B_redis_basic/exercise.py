@@ -26,8 +26,9 @@ def call_history(method: Callable) -> Callable:
     def wrapper(self, *args) -> bytes:
         """ Wrapper function for decorator
         """
-        self._redis.rpush(":inputs", str(args))
-        self._redis.rpush(":outputs", method(self, *args))
+        self._redis.rpush("{}:inputs".format(method.__qualname__), str(args))
+        self._redis.rpush("{}:outputs".format(
+            method.__qualname__), method(self, *args))
         return method(self, *args)
     return wrapper
 
