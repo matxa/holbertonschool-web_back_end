@@ -25,6 +25,8 @@ class Cache:
         """ Get key's right format
         """
         value = self._redis.get(key)
+        if value is None:
+            return None
         if callable(fn):
             value = fn(value)
         return value
