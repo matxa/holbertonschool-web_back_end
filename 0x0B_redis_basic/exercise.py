@@ -34,7 +34,7 @@ class Cache:
         """
         return self.get(k, str)
 
-    def get_str(self, k: int) -> int:
+    def get_int(self, k: int) -> int:
         """ convert bytes to int
         """
         return self.get(k, int)
