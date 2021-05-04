@@ -7,6 +7,7 @@ nginx = client.logs.nginx
 method = ["GET", "POST", "PUT", "PATCH", "DELETE"]
 
 print("{} logs".format(nginx.count_documents({})))
+print("Methods:")
 
 for request_type in method:
     print("\tmethod {}: {}".format(
