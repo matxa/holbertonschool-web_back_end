@@ -1,5 +1,10 @@
+import assert from 'assert';
+
 export default class HolbertonCourse {
   constructor(name, length, students) {
+    assert(typeof (name), 'string');
+    assert(typeof (length), 'number');
+    assert(typeof (students), 'list');
     this._name = name;
     this._length = length;
     this._students = students;
