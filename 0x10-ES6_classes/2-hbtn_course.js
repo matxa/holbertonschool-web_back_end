@@ -1,10 +1,8 @@
-import assert from 'assert';
-
 export default class HolbertonCourse {
   constructor(name, length, students) {
-    assert(typeof (name), 'string');
-    assert(typeof (length), 'number');
-    assert(typeof (students), 'list');
+    if (typeof name !== 'string') throw TypeError('Name must be a string');
+    if (typeof length !== 'number') throw TypeError('Length must be a number');
+    if (!Array.isArray(students)) throw TypeError('Students must be an array');
     this._name = name;
     this._length = length;
     this._students = students;
