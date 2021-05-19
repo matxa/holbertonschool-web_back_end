@@ -1,13 +1,13 @@
-// Given a set of strings, removes startString from every string in the set
 export default function cleanSet(set, startString) {
-  if (startString === '') return '';
-
   try {
-    return [...set]
-      .filter((str) => typeof str === 'string' && str.startsWith(startString))
-      .map((str) => str.replace(startString, ''))
-      .join('-');
-  } catch (e) {
+    const arr = [...set];
+    return arr.map((word) => {
+      if (word.startsWith(startString) && startString.length > 0) {
+        return word.split(startString)[1];
+      }
+      return undefined;
+    }).filter((word) => word !== undefined).join('-');
+  } catch (error) {
     return '';
   }
 }
