@@ -1,4 +1,5 @@
 export default function cleanSet(set, startString) {
+  if (startString === '') return '';
   try {
     const arr = [...set];
     return arr.map((word) => {
