@@ -1,3 +1,4 @@
+// CleanSet turn set to array then to string
 export default function cleanSet(set, startString) {
   if (startString === '') {
     return '';
