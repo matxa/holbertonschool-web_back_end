@@ -2,8 +2,10 @@ export default function cleanSet(set, startString) {
   try {
     const arr = [...set];
     return arr.map((word) => {
-      if (word.startsWith(startString) && startString.length > 0) {
-        return word.split(startString)[1];
+      let wordCopy = word;
+      if (wordCopy === undefined) wordCopy = '';
+      if (wordCopy.startsWith(startString) && startString.length > 0) {
+        return wordCopy.replace(startString, '');
       }
       return undefined;
     }).filter((word) => word !== undefined).join('-');
