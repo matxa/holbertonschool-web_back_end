@@ -1,8 +1,10 @@
 const fs = require('fs');
+const util = require('util');
+
+const readFile = util.promisify(fs.readFile);
 
 module.exports = async function countStudents(path) {
-  return fs.readFile(path, 'utf-8', (err, data) => {
-    if (err) { throw new Error('Cannot load the database'); }
+  return readFile(path, 'utf-8').then((data) => {
     const records = data.split('\n');
     const SWE = {
       name: 'SWE',
@@ -28,5 +30,5 @@ module.exports = async function countStudents(path) {
     console.log(`Number of students: ${fields[0].list.length + fields[1].list.length}`);
     console.log(`Number of students in ${fields[0].name}: ${fields[0].list.length}. List: ${fields[0].list}`);
     console.log(`Number of students in ${fields[1].name}: ${fields[1].list.length}. List: ${fields[1].list}`);
-  });
+  }).catch(() => { throw new Error('Cannot load the database'); });
 };
