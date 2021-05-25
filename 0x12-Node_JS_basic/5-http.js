@@ -6,7 +6,6 @@ const app = http.createServer((req, res) => {
     res.write('Hello Holberton School!');
     res.end();
   } else if (req.url === '/students') {
-    console.log = () => {};
     countStudents('database.csv')
       .then((data) => {
         res.write('This is the list of our students\n');
