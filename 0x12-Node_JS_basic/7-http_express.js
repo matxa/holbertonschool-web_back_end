@@ -8,7 +8,7 @@ app.get('/', (_, res) => {
 });
 
 app.get('/students', (_, res) => {
-  countStudents('database.csv').then((data) => res.send(data));
+  countStudents('database.csv').then((data) => res.send(`This is the list of our students\n${data}`));
 });
 
 app.listen(1245);
