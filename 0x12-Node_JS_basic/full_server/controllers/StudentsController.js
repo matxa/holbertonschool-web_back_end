@@ -13,7 +13,6 @@ export default class StudentsController {
 
   static getAllStudentsByMajor(request, response) {
     if (request.params.major) {
-      console.log('HERE');
       if (request.params.major === 'CS' || request.params.major === 'SWE') {
         readDatabase('database.csv')
           .then((fields) => {
