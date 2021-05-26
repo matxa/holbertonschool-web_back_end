@@ -1,6 +1,11 @@
 import express from 'express';
+import { appRoutes, studentRoutes } from './routes/index';
 
-export const app = express();
+const app = express();
+app.use('/', appRoutes);
+app.use('/students', studentRoutes);
 
+const PORT = 1245;
+app.listen(PORT, () => console.log(`Listening on PORT ${PORT} 🚀`));
 
-app.listen(1245);
+export default app;
