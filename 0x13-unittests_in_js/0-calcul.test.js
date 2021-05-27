@@ -20,4 +20,7 @@ describe('calculateNumber', () => {
   it('...', () => {
     assert.equal(calculateNumber(1.4, 0), 1);
   });
+  it('...', () => {
+    assert.equal(calculateNumber(0.3, 0), 0);
+  });
 });
