@@ -25,7 +25,7 @@ export default class StudentsController {
             response.status(500).send('Cannot load the database');
           });
       } else {
-        response.status(500).send('Major parameter must be CS or SWE\n');
+        response.status(500).send('Major parameter must be CS or SWE');
       }
     }
   }
