@@ -21,6 +21,6 @@ describe('calculateNumber', () => {
     assert.equal(calculateNumber(1.4, 0), 1);
   });
   it('...', () => {
-    assert.equal(calculateNumber(0, 1.4), 0);
+    assert.equal(calculateNumber(0, 1.4), 1);
   });
 });
