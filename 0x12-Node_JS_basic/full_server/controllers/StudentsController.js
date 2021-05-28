@@ -1,8 +1,16 @@
 import readDatabase from '../utils';
 
+const DB = process.argv[2];
+let _DB = null;
+if (DB) {
+  _DB = DB.replace('./', '');
+}
+
+const __DB = _DB == null ? 'database.csv' : _DB;
+
 export default class StudentsController {
-  static getAllStudents(request, response) {
-    readDatabase('database.csv')
+  static getAllStudents(equest, response) {
+    readDatabase(__DB)
       .then((fields) => {
         const output = `Number of students: ${fields[0].list.length + fields[1].list.length}\nNumber of students in ${fields[0].name}: ${fields[0].list.length}. List: ${fields[0].list}\nNumber of students in ${fields[1].name}: ${fields[1].list.length}. List: ${fields[1].list}`;
         response.status(200).send(`This is the list of our students\n${output}`);
@@ -14,7 +22,7 @@ export default class StudentsController {
   static getAllStudentsByMajor(request, response) {
     if (request.params.major) {
       if (request.params.major === 'CS' || request.params.major === 'SWE') {
-        readDatabase('database.csv')
+        readDatabase(__DB)
           .then((fields) => {
             if (request.params.major === 'CS') {
               response.status(200).send(`List: ${fields[0].list}`);
