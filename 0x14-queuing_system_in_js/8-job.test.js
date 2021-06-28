@@ -1,4 +1,3 @@
-// import kue from 'kue'
 import chai from 'chai'
 
 const createPushNotificationsJobs = require('./8-job')
